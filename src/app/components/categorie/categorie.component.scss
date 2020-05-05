@@ -1,0 +1,24 @@
+.nova-categoria{
+    div{
+        cursor: pointer;
+
+        &:hover{
+            color:#007bff;
+        }
+    }
+}
+.categorias{
+
+    .icones{
+        display: none;
+    }
+
+    &:hover{
+        .icones{
+            display: block;
+            span{
+                cursor: pointer;
+            }
+        }
+    }
+}

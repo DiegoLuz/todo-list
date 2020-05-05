@@ -1,0 +1,70 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="./categoria">Categorias</a></li>
+      <li class="breadcrumb-item"><a href="./lista;id={{idCategoria}}">Listas</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Items</li>
+    </ol>
+  </nav>
+<div class="row mt-2 mb-2 ">
+    <div class="col-xs-12 col-md-4 col-sm-4">
+        <div class="row mb-4">
+            <div class="col-12">
+                <form [formGroup]="form">
+                    <div class="row">
+                        <div class="col-9">
+                            <input type="text" class="form-control" formControlName="name"  
+                            placeholder="Digite uma novo item"
+                            [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                        </div>
+                        <div class="col-3">
+                            <button type="submit" class="btn btn-primary" (click)="submitForm(form.value)">{{botaoAcao}}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h5>Para alterar o status de um item basta arrásta-lo entre as listas.</h5>
+
+<div class="row" cdkDropListGroup>
+    <div class="col-xs-12 col-md-4 col-sm-4">
+        <h3>To do</h3>
+        <div class="row">
+            <div class="col-12 example-container">
+                <div class="list-group example-list"
+                    cdkDropList
+                    [cdkDropListData]="itens"
+                    cdkDropListSortingDisabled
+                    (cdkDropListDropped)="drop($event)">
+                    <app-item-list  *ngFor="let item of itens"
+                    [titulo]="item.name"
+                    (editarEmit)="atualizarItem($event, item)"
+                    (excluirEmit)="removerItem(item.id)"
+                    cdkDrag
+                    ></app-item-list>
+                  </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-4 col-sm-4">
+        <h3>Done</h3>
+        <div class="row">
+            <div class="col-12 example-container">
+                <div class="list-group example-list"
+                    cdkDropList
+                    [cdkDropListData]="itensDone"
+                    cdkDropListSortingDisabled
+                    (cdkDropListDropped)="dropDone($event)">
+                    <app-item-list  *ngFor="let item of itensDone"
+                    [titulo]="item.name"
+                    (editarEmit)="atualizarItem($event, item)"
+                    (excluirEmit)="removerItem(item.id)"
+                    cdkDrag
+                    ></app-item-list>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>

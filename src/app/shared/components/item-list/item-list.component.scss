@@ -1,0 +1,29 @@
+.item-lista{
+    cursor: pointer;
+    margin-bottom: 10px;
+
+    .icones{
+        display: none;
+    }
+
+    &:hover{
+        .icones{
+            display: block;
+            span{
+                cursor: pointer;
+            }
+        }
+    }
+
+    .container-input{
+        width: 100%;
+
+        input{
+            width: 100%;
+        }
+    }
+
+    .titulo{
+        width: 80%;
+    }
+}

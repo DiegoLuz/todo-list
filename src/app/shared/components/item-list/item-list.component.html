@@ -1,0 +1,18 @@
+<div class="item-lista list-group-item list-group-item-action d-flex justify-content-between"> 
+    <div class="container-input" *ngIf="modoEdicao">
+        <input type="text" [(ngModel)]="valorInput" class="form-control" 
+        (blur)="blurInput()"
+        (keyup)="onKey($event)"
+        [ngClass]="{ 'is-invalid': valorInput == ''}">
+    </div>
+
+    <div class="titulo" *ngIf="!modoEdicao" (click)="abrirItemEmit.emit()">
+        {{valorInput}}
+    </div>
+
+    <div class="icones" *ngIf="!modoEdicao">
+        <span class="material-icons" (click)="modoEdicao = true">create</span>
+        <span class="material-icons" (click)="excluirEmit.emit()">delete</span>
+    </div>
+
+</div>
